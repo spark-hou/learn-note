@@ -1,6 +1,7 @@
 <template>
   <div class="App" :class="theme">
     <div class="g-bgColor">
+
       <router-view/>
     </div>
   </div>
