@@ -15,6 +15,7 @@ module.exports = {
     "@vue/typescript"
   ],
   rules: {
+    "indent": ["error", 2],
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -44,8 +45,20 @@ module.exports = {
     'space-before-function-paren': 'off',
     'vue/attributes-order': 'off',
     'vue/one-component-per-file': 'off',
-    'vue/html-closing-bracket-newline': 'off',
-    'vue/max-attributes-per-line': 'off',
+    'vue/html-closing-bracket-newline': ["error", {
+      "singleline": "never",
+      "multiline": "always"
+    }],
+    'vue/max-attributes-per-line': ["error", {
+      "singleline": {
+        "max": 1,
+        "allowFirstLine": true
+      },
+      "multiline": {
+        "max": 1,
+        "allowFirstLine": false
+      }
+    }],
     'vue/multiline-html-element-content-newline': 'off',
     'vue/singleline-html-element-content-newline': 'off',
     'vue/attribute-hyphenation': 'off',
