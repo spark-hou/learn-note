@@ -8,6 +8,7 @@ import {createRouter, createWebHashHistory} from 'vue-router'
 
 const routes = [
   {path: '/', component: () => import("../view/Home/Home.vue"), name: 'Home'},
+  {path: '/python', component: () => import("../view/Python/Python.vue"), name: 'Python'},
 ]
 
 const route = createRouter({

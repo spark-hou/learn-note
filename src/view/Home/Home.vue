@@ -5,10 +5,9 @@
 */
 <template>
   <div
-    class="name"
-    style=""
-    data-group="adad"
+    class="g-container"
   >
+    <router-link to="/python">python</router-link>
     adasdasdas
   </div>
 </template>

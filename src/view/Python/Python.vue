@@ -1,6 +1,8 @@
 <template>
   <div class="Python">
-
+    <div class="g-container">
+      i am python
+    </div>
   </div>
 </template>
 
