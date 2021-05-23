@@ -18,10 +18,7 @@ import {defineComponent} from 'vue';
 export default defineComponent({
   name: 'Home',
   setup() {
-    let ad = () => {
-      console.log('aaaaa')
-    }
-    ad()
+
     return {}
   }
 });

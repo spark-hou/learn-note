@@ -4,6 +4,6 @@
  * @Description:
  */
 
-export default interface UserType{
-    count:number
+export default interface UserType {
+  count: number
 }
