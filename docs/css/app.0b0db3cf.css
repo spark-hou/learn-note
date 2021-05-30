@@ -1,0 +1,23 @@
+
+* {
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: "Microsoft Yahei";
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.g-container {
+  min-width: 800px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.g-cursor {
+  cursor: pointer;
+}
+
+.light .g-bgColor {
+  background-color: white;
+  color: black;
+}
+

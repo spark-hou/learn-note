@@ -3,7 +3,7 @@ const UglifyPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require("compression-webpack-plugin")
 const AntDesignThemePlugin = require("antd-theme-webpack-plugin");
 const CreateCNAME = require('./createCNAME');
-
+const webpack = require('webpack')
 
 const options = {
   antDir: path.join(__dirname, "./node_modules/ant-design-vue"), //antd包位置
@@ -21,7 +21,7 @@ function addStyleResource(rule) {
     .loader('style-resources-loader')
     .options({
       patterns: [
-        path.resolve(__dirname, './src/styles/global.less'),
+        path.resolve(__dirname, './src/styles/variable.less'),
       ],
     })
 }
@@ -34,14 +34,14 @@ module.exports = {
   productionSourceMap: true, // 生产环境是否生成 sourceMap 文件
   chainWebpack: config => {
     // 开启图片压缩
-    config.module.rule('images')
-      .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
-      .use('url-loader')
-      .loader('url-loader')
-      .options({
-        limit: 10240    // 图片小于10k转为base64,默认4k
-      })
-      .end()
+    // config.module.rule('images')
+    //   .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
+    //   .use('url-loader')
+    //   .loader('url-loader')
+    //   .options({
+    //     limit: 10240    // 图片小于10k转为base64,默认4k
+    //   })
+    //   .end()
     // .test(/\.(png|jpe?g|gif|svg)(\?.*)?$/)
     // .use('image-webpack-loader')
     // .loader('image-webpack-loader')
@@ -63,6 +63,13 @@ module.exports = {
     //antd动态样式
     config.plugin('themePlugin')
       .use(new AntDesignThemePlugin(options))
+    config.plugin('provide').use(webpack.ProvidePlugin, [{
+      $: 'jquery',
+      jquery: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
+    }])
+
   },
   configureWebpack: (config) => {
     if (process.env.NODE_ENV === 'production') {

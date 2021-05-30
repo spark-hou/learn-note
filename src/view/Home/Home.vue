@@ -5,27 +5,68 @@
 */
 <template>
   <div
-    class="g-container"
+    class="home g-container"
   >
-    <router-link to="/python">python</router-link>
-    adasdasdas
+    <div>
+      主题色：
+      <input
+        type="color"
+        v-model="color"
+      />
+    </div>
+
+    <div class="title">
+      spark的在线笔记
+    </div>
+    <router-link
+      class="g-cursor link"
+      to="/python"
+    >python笔记
+    </router-link>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {defineComponent, ref, watch, onMounted} from 'vue';
+import {throttle} from '@/plugin/globalFun'
 
 export default defineComponent({
   name: 'Home',
   setup() {
+    const changeTheme = throttle((primaryColor: string) => {
+      (window as any).less.modifyVars({
+        "@primary-color": primaryColor
+      });
+    })
+    let color = ref('')
+    watch(color, (val: string) => {
+      changeTheme(val)
+    })
+    //进入时获取主题色
+    onMounted(() => {
 
-    return {}
+    })
+    return {color}
   }
 });
 </script>
 
 <style lang="less">
-  .less {
-    color: @color-red;
+  .home {
+    position: relative;
+    text-align: center;
+    padding-top: 20px;
+
+    .title {
+      font-size: 30px;
+      font-weight: bolder;
+      padding: 20px;
+    }
+
+    .link {
+      font-size: 20px;
+      border-bottom: 1px solid gray;
+      padding: 10px;
+    }
   }
 </style>
