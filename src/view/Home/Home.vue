@@ -36,7 +36,11 @@ export default defineComponent({
     const changeTheme = throttle((primaryColor: string) => {
       (window as any).less.modifyVars({
         "@primary-color": primaryColor
-      });
+      }).then(() => {
+        //把颜色设置写入stroage
+        localStorage.setItem('color', primaryColor)
+      })
+
     })
     let color = ref('#992777')
     watch(color, (val: string) => {
@@ -44,6 +48,10 @@ export default defineComponent({
     })
     //进入时获取主题色
     onMounted(() => {
+      //读取主题颜色
+      if (localStorage.getItem('color')) {
+        color.value = localStorage.getItem('color') || '#992777'
+      }
 
     })
     return {color}

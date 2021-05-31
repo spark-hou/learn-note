@@ -3,6 +3,7 @@
  * @date 2021-05-30 00:05
  * @Description:
  */
+import {chart} from "@/plugin/golbalInterface";
 
 //解决hash route和锚点冲突
 export function handleAnchorClick(e: any) {
@@ -46,4 +47,15 @@ export function throttle(fn: any) {
       canRun = true;
     }, 500);
   };
+}
+
+/**
+ * 销毁echart实例，方便下次重新渲染时获取实例
+ * @param chart
+ */
+export function dropChart(chart: chart) {
+  if (chart.value?.dispose) {
+    chart.value.dispose()
+  }
+  chart.value = null
 }
