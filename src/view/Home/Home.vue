@@ -38,7 +38,7 @@ export default defineComponent({
         "@primary-color": primaryColor
       });
     })
-    let color = ref('')
+    let color = ref('#992777')
     watch(color, (val: string) => {
       changeTheme(val)
     })

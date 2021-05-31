@@ -101,7 +101,7 @@ module.exports = {
             warnings: false,
             compress: {
               drop_console: true, // console
-              drop_debugger: false,
+              drop_debugger: true,
               pure_funcs: ['console.log'] // 移除console
             }
           }
