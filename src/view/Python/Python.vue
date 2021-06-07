@@ -83,27 +83,30 @@ export default defineComponent({
           },
         },
       });
-      // let centerX: any = 0;
+      let centerX: any = 0;
       let data = {
         id: "Modeling Methods",
-        children: {
-          id: 'test'
-        }
+        children: [
+          {id: 'test'},
+          {id: 'test1'},
+          {id: 'test2'},
+          {id: 'test3'},
+        ]
       }
-      // graph.node(function (node) {
-      //   if (node.id === 'Modeling Methods') {
-      //     centerX = node.x;
-      //   }
-      //
-      //   return {
-      //     label: node.id,
-      //     labelCfg: {
-      //       position:
-      //       // @ts-ignore
-      //           node.children && node.children.length > 0 ? 'right' : node.x > centerX ? 'right' : 'left', offset: 5,
-      //     },
-      //   };
-      // });
+      graph.node(function (node) {
+        console.log(node, '====')
+        if (node.id === 'Modeling Methods') {
+          centerX = node.x;
+        }
+        return {
+          label: node.id,
+          labelCfg: {
+            position:
+            // @ts-ignore
+                node.children && node.children.length > 0 ? 'right' : node.x > centerX ? 'right' : 'left', offset: 5,
+          },
+        };
+      });
 
       graph.data(data);
       graph.render();
