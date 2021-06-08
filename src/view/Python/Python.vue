@@ -107,7 +107,7 @@ export default defineComponent({
         ]
       }
 
-      graph.node(function (node) {
+      graph.node(function (node:any) {
         console.log(node, '====')
         if (node.id === 'Modeling Methods') {
           centerX = node.x;
