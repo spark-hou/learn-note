@@ -165,121 +165,121 @@ G6.registerNode(
   },
   'single-node',
 );
-G6.registerBehavior('dice-mindmap', {
-  getEvents() {
-    return {
-      'node:click': 'clickNode',
-      'node:dblclick': 'editNode',
-      'node:mouseenter': 'hoverNode',
-      'node:mouseleave': 'hoverNodeOut',
-    };
-  },
-  clickNode(evt: any) {
-    const model = evt.item.get('model');
-    const name = evt.target.get('action');
-    switch (name) {
-    case 'add':
-      // eslint-disable-next-line no-case-declarations
-      const newId =
-            model.id +
-            '-' +
-            (((model.children || []).reduce((a: any, b: any) => {
-              const num = Number(b.id.split('-').pop());
-              return a < num ? num : a;
-            }, 0) || 0) +
-              1);
-      evt.currentTarget.updateItem(evt.item, {
-        children: (model.children || []).concat([{
-          id: newId,
-          direction: newId.charCodeAt(newId.length - 1) % 2 === 0 ? 'right' : 'left',
-          label: 'New',
-          type: 'dice-mind-map-leaf',
-          color: model.color || colorArr[Math.floor(Math.random() * colorArr.length)],
-        },]),
-      });
-      evt.currentTarget.layout(false);
-      break;
-    case 'delete':
-      // eslint-disable-next-line no-case-declarations
-      const parent = evt.item.get('parent');
-      evt.currentTarget.updateItem(parent, {
-        children: (parent.get('model').children || []).filter((e: any) => e.id !== model.id),
-      });
-      evt.currentTarget.layout(false);
-      break;
-    case 'edit':
-      break;
-    default:
-      return;
-    }
-  },
-  editNode(evt: any) {
-    const item = evt.item;
-    const model = item.get('model');
-    const {
-      x,
-      y
-    } = item.calculateBBox();
-    const graph = evt.currentTarget;
-    const realPosition = evt.currentTarget.getClientByPoint(x, y);
-    const el = document.createElement('div');
-    const fontSizeMap: any = {
-      'dice-mind-map-root': 24,
-      'dice-mind-map-sub': 18,
-      'dice-mind-map-leaf': 16,
-    };
-    el.style.fontSize = fontSizeMap[model.type] + 'px';
-    el.style.position = 'fixed';
-    el.style.top = realPosition.y + 'px';
-    el.style.left = realPosition.x + 'px';
-    el.style.paddingLeft = '12px';
-    el.style.transformOrigin = 'top left';
-    el.style.transform = `scale(${evt.currentTarget.getZoom()})`;
-    const input = document.createElement('input');
-    input.style.border = 'none';
-    input.value = model.label;
-    input.style.width = Util.getTextSize(model.label, fontSizeMap[model.type])[0] + 'px';
-    input.className = 'dice-input';
-    el.className = 'dice-input';
-    el.appendChild(input);
-    document.body.appendChild(el);
-    const destroyEl = () => {
-      document.body.removeChild(el);
-    };
-    const clickEvt = (event: any) => {
-      if (!(event.target && event.target.className && event.target.className.includes('dice-input'))) {
-        window.removeEventListener('mousedown', clickEvt);
-        window.removeEventListener('scroll', clickEvt);
-        graph.updateItem(item, {
-          label: input.value,
-        });
-        graph.layout(false);
-        graph.off('wheelZoom', clickEvt);
-        destroyEl();
-      }
-    };
-    graph.on('wheelZoom', clickEvt);
-    window.addEventListener('mousedown', clickEvt);
-    window.addEventListener('scroll', clickEvt);
-    input.addEventListener('keyup', (event) => {
-      if (event.key === 'Enter') {
-        clickEvt({
-          target: {},
-        });
-      }
-    });
-  },
-  hoverNode(evt: any) {
-    evt.currentTarget.updateItem(evt.item, {
-      hover: true,
-    });
-  },
-  hoverNodeOut(evt: any) {
-    evt.currentTarget.updateItem(evt.item, {
-      hover: false,
-    });
-  },
-});
+// G6.registerBehavior('dice-mindmap', {
+//   getEvents() {
+//     return {
+//       'node:click': 'clickNode',
+//       'node:dblclick': 'editNode',
+//       'node:mouseenter': 'hoverNode',
+//       'node:mouseleave': 'hoverNodeOut',
+//     };
+//   },
+//   clickNode(evt: any) {
+//     const model = evt.item.get('model');
+//     const name = evt.target.get('action');
+//     switch (name) {
+//     case 'add':
+//       // eslint-disable-next-line no-case-declarations
+//       const newId =
+//             model.id +
+//             '-' +
+//             (((model.children || []).reduce((a: any, b: any) => {
+//               const num = Number(b.id.split('-').pop());
+//               return a < num ? num : a;
+//             }, 0) || 0) +
+//               1);
+//       evt.currentTarget.updateItem(evt.item, {
+//         children: (model.children || []).concat([{
+//           id: newId,
+//           direction: newId.charCodeAt(newId.length - 1) % 2 === 0 ? 'right' : 'left',
+//           label: 'New',
+//           type: 'dice-mind-map-leaf',
+//           color: model.color || colorArr[Math.floor(Math.random() * colorArr.length)],
+//         },]),
+//       });
+//       evt.currentTarget.layout(false);
+//       break;
+//     case 'delete':
+//       // eslint-disable-next-line no-case-declarations
+//       const parent = evt.item.get('parent');
+//       evt.currentTarget.updateItem(parent, {
+//         children: (parent.get('model').children || []).filter((e: any) => e.id !== model.id),
+//       });
+//       evt.currentTarget.layout(false);
+//       break;
+//     case 'edit':
+//       break;
+//     default:
+//       return;
+//     }
+//   },
+//   editNode(evt: any) {
+//     const item = evt.item;
+//     const model = item.get('model');
+//     const {
+//       x,
+//       y
+//     } = item.calculateBBox();
+//     const graph = evt.currentTarget;
+//     const realPosition = evt.currentTarget.getClientByPoint(x, y);
+//     const el = document.createElement('div');
+//     const fontSizeMap: any = {
+//       'dice-mind-map-root': 24,
+//       'dice-mind-map-sub': 18,
+//       'dice-mind-map-leaf': 16,
+//     };
+//     el.style.fontSize = fontSizeMap[model.type] + 'px';
+//     el.style.position = 'fixed';
+//     el.style.top = realPosition.y + 'px';
+//     el.style.left = realPosition.x + 'px';
+//     el.style.paddingLeft = '12px';
+//     el.style.transformOrigin = 'top left';
+//     el.style.transform = `scale(${evt.currentTarget.getZoom()})`;
+//     const input = document.createElement('input');
+//     input.style.border = 'none';
+//     input.value = model.label;
+//     input.style.width = Util.getTextSize(model.label, fontSizeMap[model.type])[0] + 'px';
+//     input.className = 'dice-input';
+//     el.className = 'dice-input';
+//     el.appendChild(input);
+//     document.body.appendChild(el);
+//     const destroyEl = () => {
+//       document.body.removeChild(el);
+//     };
+//     const clickEvt = (event: any) => {
+//       if (!(event.target && event.target.className && event.target.className.includes('dice-input'))) {
+//         window.removeEventListener('mousedown', clickEvt);
+//         window.removeEventListener('scroll', clickEvt);
+//         graph.updateItem(item, {
+//           label: input.value,
+//         });
+//         graph.layout(false);
+//         graph.off('wheelZoom', clickEvt);
+//         destroyEl();
+//       }
+//     };
+//     graph.on('wheelZoom', clickEvt);
+//     window.addEventListener('mousedown', clickEvt);
+//     window.addEventListener('scroll', clickEvt);
+//     input.addEventListener('keyup', (event) => {
+//       if (event.key === 'Enter') {
+//         clickEvt({
+//           target: {},
+//         });
+//       }
+//     });
+//   },
+//   hoverNode(evt: any) {
+//     evt.currentTarget.updateItem(evt.item, {
+//       hover: true,
+//     });
+//   },
+//   hoverNodeOut(evt: any) {
+//     evt.currentTarget.updateItem(evt.item, {
+//       hover: false,
+//     });
+//   },
+// });
 G6.registerBehavior('scroll-canvas', {
   getEvents: function getEvents() {
     return {
