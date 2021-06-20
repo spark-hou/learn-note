@@ -54,8 +54,13 @@ export function throttle(fn: any) {
  * @param chart
  */
 export function dropChart(chart: chart) {
+  //echart的销毁方法
   if (chart.value?.dispose) {
     chart.value.dispose()
+  }
+  //antv的销毁方法
+  if (chart.value?.destroy) {
+    chart.value.destroy()
   }
   chart.value = null
 }
