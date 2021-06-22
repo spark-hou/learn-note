@@ -3,8 +3,8 @@
  * @date 2021-04-16 16:09
  * @Description:
  */
-import {Button, Switch, Anchor,PageHeader } from 'ant-design-vue/es';
-
+import {Button, Switch, Anchor,PageHeader,Typography } from 'ant-design-vue/es';
+const{title}=Typography
 export default function (app: any) {
   app.use(Button)
   app.use(Switch)

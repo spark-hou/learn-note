@@ -10,6 +10,19 @@
         :title="item.title"
       />
     </a-anchor>
+    <code>
+      安装tensorflow2.3的cpu版本
+      pip install tensorflow-cpu==2.3.0 -i https://pypi.douban.com/simple/
+
+      二、Tensorflow GPU 版本安装
+      GPU版本有两个依赖库cuda和cudnn，对于 tensorflow2.3来讲
+      CUDA的版本需要是 10.1
+      cudnn版本号需要不小于 7.6
+      因为GPU版本这两个依赖库比较大，不推荐大家手动配置
+
+      conda install cudatoolkit=10.1
+      conda install cudnn=7.6.5
+    </code>
     <div class="g-container">
       <a-page-header
         id="Top"
