@@ -48,7 +48,7 @@
         >
           conda install cudnn=7.6.5
         </a-typography-text>
-
+22
       </a-typography>
       <div class="g-block"></div>
       <div class="g-block"></div>
