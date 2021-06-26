@@ -21,8 +21,7 @@
       <br/>
       <br/>
       <a-typography>
-        <a-typography-title> 安装tensorflow2.3的cpu版本
-        </a-typography-title>
+        <a-typography-title> 安装tensorflow2.3的cpu版本</a-typography-title>
         <a-typography-paragraph>
           <a-typography-text
             code
@@ -48,7 +47,12 @@
         >
           conda install cudnn=7.6.5
         </a-typography-text>
-22
+        <br/>
+        <a-typography-text
+          code
+          copyable
+        >pip install tensorflow-gpu==2.3.0 -i https://pypi.douban.com/simple/
+        </a-typography-text>
       </a-typography>
       <div class="g-block"></div>
       <div class="g-block"></div>
