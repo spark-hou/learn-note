@@ -53,6 +53,13 @@
           copyable
         >pip install tensorflow-gpu==2.3.0 -i https://pypi.douban.com/simple/
         </a-typography-text>
+        <a-typography-title>其他需要的库</a-typography-title>
+        <a-typography-text
+          code
+          copyable
+        >
+          pip install numpy pandas matplotlib sklearn -i https://pypi.douban.com/simple/
+        </a-typography-text>
       </a-typography>
       <div class="g-block"></div>
       <div class="g-block"></div>
