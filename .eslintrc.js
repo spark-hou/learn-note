@@ -16,7 +16,6 @@ module.exports = {
     "@vue/typescript"
   ],
   rules: {
-    "indent": ["error", 2],
     '@typescript-eslint/ban-ts-ignore': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -76,5 +75,8 @@ module.exports = {
         math: 'always',
       },
     ],
+    'vue/script-indent': ['error', 2, {
+      'baseIndent': 1
+    }]
   },
 };
