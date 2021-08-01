@@ -60,12 +60,15 @@
         >
           pip install numpy pandas matplotlib sklearn -i https://pypi.douban.com/simple/
         </a-typography-text>
+        <a-typography-title>反向传播-梯度下降</a-typography-title>
+        <a-typography-title :level="2">反向传播-梯度下降</a-typography-title>
+
       </a-typography>
       <div class="g-block"></div>
       <div class="g-block"></div>
       <div
         id="PythonG6"
-        data-name="脑图数"
+        data-name="脑图树"
       ></div>
       <div class="g-block"></div>
       <div class="g-block"></div>
