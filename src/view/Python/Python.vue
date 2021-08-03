@@ -61,8 +61,43 @@
           pip install numpy pandas matplotlib sklearn -i https://pypi.douban.com/simple/
         </a-typography-text>
         <a-typography-title>反向传播-梯度下降</a-typography-title>
-        <a-typography-title :level="2">反向传播-梯度下降</a-typography-title>
-
+        <a-typography-paragraph>反向传播公式：W t+1=W t - Lr * (loss函数对W t求偏导)</a-typography-paragraph>
+        <a-typography-paragraph>
+          <a-typography-text
+            mark
+            strong
+          >反向传播：
+          </a-typography-text>
+          <a-typography-text mark>从后向前，逐层求损失函数对每层神经元参数的偏导数，迭代更新所有参数</a-typography-text>
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          ep：损失函数loss=（w + 1）² &nbsp;&nbsp;&nbsp;&nbsp;对w的偏导=2w + 2
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          参数w初始化为5，学习率Lr设置为0.2则
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          1次<span class="g-space"></span>参数w：5<span class="g-space"></span>5 - 0.2 * （2 * 5 + 2）= 2.6
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          2次<span class="g-space"></span>参数w：2.6<span class="g-space"></span>2.6 - 0.2 * （2 * 2.6 + 2）= 1.16
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          3次<span class="g-space"></span>参数w：1.16<span class="g-space"></span>1.16 - 0.2 * （2 * 1.16 + 2）= 0.296
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          .....
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          n次<span class="g-space"></span>参数w：-1<span class="g-space"></span>-1 - 0.2 * （2 * -1 + 2）= -1
+        </a-typography-paragraph>
+        <a-typography-paragraph>
+          <a-typography-text
+            mark
+            strong
+          >最后求出w参数的最优解是-1，即此时的loss函数的偏导数为0
+          </a-typography-text>
+        </a-typography-paragraph>
       </a-typography>
       <div class="g-block"></div>
       <div class="g-block"></div>
