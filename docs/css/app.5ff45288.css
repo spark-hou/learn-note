@@ -66,6 +66,9 @@
 .g-block {
   padding-top: 20px;
 }
+.g-space {
+  padding: 0 20px;
+}
 
 .light .g-bgColor {
   background-color: white;
