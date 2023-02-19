@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+  import {defineComponent} from 'vue';
 
-export default defineComponent({
-  name: 'Python',
-  setup() {
-    return {}
-  }
-});
+  export default defineComponent({
+    name: 'Python',
+    setup() {
+      return {}
+    }
+  });
 </script>
 
 <style lang="less" scoped>
