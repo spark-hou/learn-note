@@ -48,7 +48,7 @@
 }
 /*IE--------------------------------------------end*/
 .g-container {
-  min-width: 800px;
+  min-width: 500px;
   max-width: 1200px;
   margin: 0 auto;
 }

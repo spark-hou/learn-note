@@ -23,6 +23,12 @@
       to="/python"
     >python笔记
     </router-link>
+    <div class="g-block"></div>
+    <router-link
+      class="g-cursor link"
+      to="/webInterview"
+    >前端面试题
+    </router-link>
   </div>
 </template>
 
